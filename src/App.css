@@ -40,3 +40,8 @@
 .read-the-docs {
   color: #888;
 }
+
+/* map */
+.leaflet-container{
+    height: 100vh;
+}
