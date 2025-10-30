@@ -1,12 +1,16 @@
-import React from 'react'
+import axios from 'axios'
+import { BrowserRouter as Router, Routes, Route } from 'react-router'
+
 import MapDisplay from './components/MapDisplay/MapDisplay'
 import './App.css'
 
 const App = () => {
   return (
-    <div>
-      <MapDisplay />
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<MapDisplay />} />
+      </Routes>
+    </Router>
   )
 }
 
