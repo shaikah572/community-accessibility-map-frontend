@@ -9,7 +9,7 @@ import 'leaflet/dist/leaflet.css'
 import { Icon } from 'leaflet'
 import SlidingPane from "react-sliding-pane"
 import "react-sliding-pane/dist/react-sliding-pane.css"
-
+import CommentsDisplay from './CommentsDisplay/CommentsDisplay'
 
 const MapDisplay = () => {
 
@@ -35,28 +35,28 @@ const MapDisplay = () => {
 
     return (
         <>
-                <MapContainer center={[21.506441, 39.196172]} zoom={13} className='map'>
-                    <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                    {
-                        markers.map((marker) => {
-                            const customIcon = new Icon({
-                                iconUrl: `http://127.0.0.1:8000/${marker.category.icon}`,
-                                iconSize: [30, 30]
-                            })
-                            return <div>
-                                <Marker
-                                    position={[marker.lat, marker.lng]}
-                                    icon={customIcon}
-                                    eventHandlers={{
-                                        click: () => { setIsPaneOpen(true); setCurrentMarker(marker); },
-                                    }} >
-                                </Marker>
-                            </div>
+            <MapContainer center={[21.506441, 39.196172]} zoom={13} className='map'>
+                <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                {
+                    markers.map((marker) => {
+                        const customIcon = new Icon({
+                            iconUrl: `http://127.0.0.1:8000/${marker.category.icon}`,
+                            iconSize: [30, 30]
                         })
-                    }
-                </MapContainer>
+                        return <div>
+                            <Marker
+                                position={[marker.lat, marker.lng]}
+                                icon={customIcon}
+                                eventHandlers={{
+                                    click: () => { setIsPaneOpen(true); setCurrentMarker(marker); },
+                                }} >
+                            </Marker>
+                        </div>
+                    })
+                }
+            </MapContainer>
             <SlidingPane
                 className='some-custom-class'
                 overlayClassName='some-custom-overlay-class'
@@ -66,9 +66,7 @@ const MapDisplay = () => {
                 from='left'
                 width='40vw'
                 onRequestClose={() => { setIsPaneOpen(false) }}>
-                <div>test</div>
-                <br />
-                <div>another test</div>
+                <CommentsDisplay markerId={currentMarker ? currentMarker.id : ''} />
             </SlidingPane>
         </>
     )
