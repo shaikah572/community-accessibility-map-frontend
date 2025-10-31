@@ -49,6 +49,7 @@ const MapDisplay = () => {
                             <Marker
                                 position={[marker.lat, marker.lng]}
                                 icon={customIcon}
+                                // stackoverflow > "Arbitrary function on react-leaflet marker click"
                                 eventHandlers={{
                                     click: () => { setIsPaneOpen(true); setCurrentMarker(marker); },
                                 }} >
