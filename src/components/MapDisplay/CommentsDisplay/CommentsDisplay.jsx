@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import CommentForm from './CommentForm/CommentForm'
+// import CommentForm from '../CommentForm/CommentForm'
 
 const CommentsDisplay = ({ markerId }) => {
 
@@ -22,7 +22,7 @@ const CommentsDisplay = ({ markerId }) => {
 
     return (
         <>
-            <CommentForm />
+            
             {
                 comments.map(comment => {
                     return <div>

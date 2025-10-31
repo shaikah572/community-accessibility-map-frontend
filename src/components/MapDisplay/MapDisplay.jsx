@@ -10,13 +10,14 @@ import { Icon } from 'leaflet'
 import SlidingPane from "react-sliding-pane"
 import "react-sliding-pane/dist/react-sliding-pane.css"
 import CommentsDisplay from './CommentsDisplay/CommentsDisplay'
+import CommentForm from './CommentForm/CommentForm'
 
-const MapDisplay = () => {
+
+const MapDisplay = ({ user }) => {
 
     const [isPaneOpen, setIsPaneOpen] = useState(false)
     const [markers, setMarkers] = useState([])
     const [currentMarker, setCurrentMarker] = useState(null)
-
 
     const getMarkers = async () => {
         try {
@@ -67,6 +68,10 @@ const MapDisplay = () => {
                 from='left'
                 width='40vw'
                 onRequestClose={() => { setIsPaneOpen(false) }}>
+                    {
+                        user ? <CommentForm /> : ''
+                    }
+                
                 <CommentsDisplay markerId={currentMarker ? currentMarker.id : ''} />
             </SlidingPane>
         </>
