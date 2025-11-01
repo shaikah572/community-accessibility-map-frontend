@@ -71,7 +71,7 @@ const MapDisplay = ({ user }) => {
                     {
                         user ? <CommentForm user={user} markerId={currentMarker ? currentMarker.id : ''} /> : ''
                     }
-                <CommentsDisplay markerId={currentMarker ? currentMarker.id : ''} />
+                <CommentsDisplay user={user ? user : ''} markerId={currentMarker ? currentMarker.id : ''} />
             </SlidingPane>
         </>
     )
