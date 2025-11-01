@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-// import CommentForm from '../CommentForm/CommentForm'
 
 const CommentsDisplay = ({ markerId }) => {
 
@@ -9,7 +8,6 @@ const CommentsDisplay = ({ markerId }) => {
     const getAllComments = async () =>{
         try{
             const response = await axios.get(`http://127.0.0.1:8000/api/markers/${markerId}/comments/`)
-            console.log(response.data)
             setComments(response.data)
         } catch(error){
             console.log(error)

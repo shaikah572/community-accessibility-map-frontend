@@ -52,7 +52,7 @@ const MapDisplay = ({ user }) => {
                                 icon={customIcon}
                                 // stackoverflow > "Arbitrary function on react-leaflet marker click"
                                 eventHandlers={{
-                                    click: () => { setIsPaneOpen(true); setCurrentMarker(marker); },
+                                    click: () => { setCurrentMarker(marker); setIsPaneOpen(true); },
                                 }} >
                             </Marker>
                         </div>
@@ -69,9 +69,8 @@ const MapDisplay = ({ user }) => {
                 width='40vw'
                 onRequestClose={() => { setIsPaneOpen(false) }}>
                     {
-                        user ? <CommentForm /> : ''
+                        user ? <CommentForm user={user} markerId={currentMarker ? currentMarker.id : ''} /> : ''
                     }
-                
                 <CommentsDisplay markerId={currentMarker ? currentMarker.id : ''} />
             </SlidingPane>
         </>
