@@ -1,14 +1,12 @@
 import { useState } from 'react'
-import axios from 'axios'
 import { authRequest } from '../../../lib/auth'
 
 
-const CommentForm = ({ user, markerId }) => {
+const CommentForm = ({ markerId }) => {
 
     const [formData, setFormData] = useState({
         text: '',
-        image: null,
-        user_id: user.user_id
+        image: null
     })
 
     // stackoverflow > "How to post a file from a form with Axios"
@@ -22,7 +20,6 @@ const CommentForm = ({ user, markerId }) => {
             const data = new FormData()
             data.append('text', formData.text)
             if (formData.image) data.append('image', formData.image)
-            data.append('user_id', formData.user_id)
             const response = await authRequest({
                 method: 'post',
                 url: `http://127.0.0.1:8000/api/markers/${markerId}/comments/`,

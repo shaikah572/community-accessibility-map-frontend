@@ -69,7 +69,7 @@ const MapDisplay = ({ user }) => {
                 width='40vw'
                 onRequestClose={() => { setIsPaneOpen(false) }}>
                     {
-                        user ? <CommentForm user={user} markerId={currentMarker ? currentMarker.id : ''} /> : ''
+                        user ? <CommentForm markerId={currentMarker ? currentMarker.id : ''} /> : ''
                     }
                 <CommentsDisplay user={user ? user : ''} markerId={currentMarker ? currentMarker.id : ''} />
             </SlidingPane>
