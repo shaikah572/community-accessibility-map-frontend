@@ -6,6 +6,7 @@ import './App.css'
 
 import MapDisplay from './components/MapDisplay/MapDisplay'
 import Login from './components/Auth/Login'
+import Signup from './components/Auth/Signup'
 
 const App = () => {
  
@@ -15,6 +16,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path='/login' element={ <Login setUser={setUser} />} />
+        <Route path='/signup' element={ <Signup />} />
         <Route path='/' element={<MapDisplay user={user} />} />
       </Routes>
     </Router>
