@@ -7,6 +7,7 @@ import './App.css'
 import NavBar from './components/NavBar/NavBar'
 import Login from './components/Auth/Login'
 import Signup from './components/Auth/Signup'
+import UserProfile from './components/UserProfile/UserProfile'
 import MapDisplay from './components/MapDisplay/MapDisplay'
 import MarkerForm from './components/MarkerForm/MarkerForm'
 
@@ -21,6 +22,7 @@ const App = () => {
         <Route path='/login' element={ <Login setUser={setUser} />} />
         <Route path='/signup' element={ <Signup />} />
         <Route path='/' element={<MapDisplay user={user} />} />
+        <Route path='/profile' element={<UserProfile />} />
         <Route path='/add-marker' element={<MarkerForm/>} />
 
       </Routes>
