@@ -8,6 +8,7 @@ import NavBar from './components/NavBar/NavBar'
 import Login from './components/Auth/Login'
 import Signup from './components/Auth/Signup'
 import MapDisplay from './components/MapDisplay/MapDisplay'
+import MarkerForm from './components/MarkerForm/MarkerForm'
 
 const App = () => {
  
@@ -20,6 +21,8 @@ const App = () => {
         <Route path='/login' element={ <Login setUser={setUser} />} />
         <Route path='/signup' element={ <Signup />} />
         <Route path='/' element={<MapDisplay user={user} />} />
+        <Route path='/add-marker' element={<MarkerForm/>} />
+
       </Routes>
     </Router>
   )
