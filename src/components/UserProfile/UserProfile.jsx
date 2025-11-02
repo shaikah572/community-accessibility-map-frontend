@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { authRequest } from '../../lib/auth'
+import { Link } from 'react-router'
+import UserForm from './UseForm/UserForm'
 
 const UserProfile = () => {
 
@@ -28,6 +30,9 @@ const UserProfile = () => {
         <h1>profile</h1>
         <h2>{userInformations.username}</h2>
         <h2>{userInformations.email}</h2>
+        <Link to='/profile/edit'>
+            <button>Update Information</button>
+        </Link>
         </>
     )
 }
