@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
-import { authRequest } from '../../lib/auth'
-import { Link } from 'react-router'
-import UserForm from './UseForm/UserForm'
+import { authRequest, clearTokens } from '../../lib/auth'
+import { Link, useNavigate } from 'react-router'
 
-const UserProfile = () => {
 
+const UserProfile = ({ setUser }) => {
+
+    const navigate = useNavigate()
     const [userInformations, setUserInformations] = useState({})
 
     const getUserInformations = async () => {
@@ -24,6 +25,25 @@ const UserProfile = () => {
         getUserInformations()
     }, [])
 
+    const handleDeleteAccount = async () => {
+        const isConfirmed = confirm('Are you sure you want to delete account?')
+
+        if (isConfirmed) {
+            try {
+                await authRequest({
+                    method: 'delete',
+                    url: `http://127.0.0.1:8000/api/user/delete/`
+                })
+                clearTokens()
+                setUser(null)
+                navigate('/')
+            } catch (error) {
+                console.error(error)
+            }
+
+        }
+    }
+
 
     return (
         <>
@@ -33,6 +53,7 @@ const UserProfile = () => {
         <Link to='/profile/edit'>
             <button>Update Information</button>
         </Link>
+        <button type='button' onClick={() => handleDeleteAccount()}>Delete Account</button>
         </>
     )
 }

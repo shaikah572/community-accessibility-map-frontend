@@ -2,7 +2,7 @@ import React from 'react'
 import { clearTokens } from '../../lib/auth'
 import { useNavigate } from 'react-router'
 
-const Logout = () => {
+const Logout = ({ setUser }) => {
     const navigate = useNavigate()
     function handleLogOut() {
         clearTokens()

@@ -23,7 +23,7 @@ const App = () => {
         <Route path='/login' element={ <Login setUser={setUser} />} />
         <Route path='/signup' element={ <Signup />} />
         <Route path='/' element={<MapDisplay user={user} />} />
-        <Route path='/profile' element={<UserProfile />} />
+        <Route path='/profile' element={<UserProfile setUser={setUser} />} />
         <Route path='/profile/edit' element={<UserForm />} />
         <Route path='/add-marker' element={<MarkerForm/>} />
 
