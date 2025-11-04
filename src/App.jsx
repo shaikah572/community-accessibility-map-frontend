@@ -10,6 +10,8 @@ import UserProfile from './components/UserProfile/UserProfile'
 import UserForm from './components/UserProfile/UseForm/UserForm'
 import MapDisplay from './components/MapDisplay/MapDisplay'
 import MarkerForm from './components/MarkerForm/MarkerForm'
+import AboutPage from './components/AboutPage/AboutPage'
+import ContactPage from './components/ContactPage/ContactPage'
 
 import ProtectedRoute from './components/Auth/ProtectedRoute'
 
@@ -24,7 +26,8 @@ const App = () => {
         <Route path='/login' element={<Login setUser={setUser} />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/' element={<MapDisplay user={user} />} />
-        
+        <Route path='/about' element={<AboutPage />} />
+        <Route path='/contact' element={<ContactPage />} />
         <Route path='/profile' element={<ProtectedRoute>
           <UserProfile setUser={setUser} />
         </ProtectedRoute>} />
