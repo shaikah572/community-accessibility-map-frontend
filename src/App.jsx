@@ -1,7 +1,8 @@
+// Tailwind CSS styling refrences > "https://flowbite.com/"
+
 import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router'
 import { getUserFromToken } from './lib/auth'
-import './App.css'
 
 import NavBar from './components/NavBar/NavBar'
 import Login from './components/Auth/Login'

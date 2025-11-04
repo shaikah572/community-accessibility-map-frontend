@@ -41,17 +41,7 @@
   color: #888;
 }
 
-/* map */
-.leaflet-container{
-  height: 100vh;
-  width: 100vw;
-  z-index: 0 !important;
-}
 
-
-.map{
-  position: relative;
-}
 
 
 

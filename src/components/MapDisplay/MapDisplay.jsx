@@ -11,7 +11,7 @@ import SlidingPane from "react-sliding-pane"
 import "react-sliding-pane/dist/react-sliding-pane.css"
 import CommentsDisplay from './CommentsDisplay/CommentsDisplay'
 import CommentForm from './CommentForm/CommentForm'
-
+import SlidingPaneHeader from './SlidingPaneHeader/SlidingPaneHeader'
 
 const MapDisplay = ({ user }) => {
 
@@ -35,7 +35,7 @@ const MapDisplay = ({ user }) => {
 
 
     return (
-        <>
+        <div className='w-screen h-[calc(100vh-9rem)]'>
             <MapContainer center={[21.506441, 39.196172]} zoom={13} className='map'>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -61,19 +61,20 @@ const MapDisplay = ({ user }) => {
             </MapContainer>
             <SlidingPane
                 className='some-custom-class'
-                overlayClassName='some-custom-overlay-class'
+                hideHeader={true}
                 isOpen={isPaneOpen}
                 title={currentMarker ? currentMarker.name : ''}
                 subtitle={currentMarker ? currentMarker.description : ''}
                 from='left'
                 width='40vw'
                 onRequestClose={() => { setIsPaneOpen(false) }}>
-                    {
-                        user ? <CommentForm markerId={currentMarker ? currentMarker.id : ''} /> : ''
-                    }
+                    <SlidingPaneHeader currentMarker={currentMarker} />
+                {
+                    user ? <CommentForm markerId={currentMarker ? currentMarker.id : ''} /> : ''
+                }
                 <CommentsDisplay user={user ? user : ''} markerId={currentMarker ? currentMarker.id : ''} />
             </SlidingPane>
-        </>
+        </div>
     )
 }
 
