@@ -22,10 +22,9 @@ const MapDisplay = ({ user }) => {
     const getMarkers = async () => {
         try {
             const response = await axios.get('http://127.0.0.1:8000/api/markers/')
-            console.log(response.data)
             setMarkers(response.data)
         } catch (error) {
-            console.log(error)
+            console.error(error)
         }
     }
 
@@ -39,7 +38,8 @@ const MapDisplay = ({ user }) => {
             <MapContainer center={[21.506441, 39.196172]} zoom={13} className='map'>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                    url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
+                    
                 {
                     markers.map((marker) => {
                         const customIcon = new Icon({
